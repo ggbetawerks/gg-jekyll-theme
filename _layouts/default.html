@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+
+  <body>
+
+    {%- include header.html -%}
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </main>
+
+    {%- include footer.html -%}
+    <button class="back-to-top hidden"><svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="back-to-top-icon"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M7 11l5-5m0 0l5 5m-5-5v12"
+      />
+    </svg></button>
+    <script src="{{ "/assets/backtotop.js" | relative_url }}"></script>
+  </body>
+
+</html>
