@@ -4,32 +4,26 @@
   {%- include head.html -%}
 
   <body>
-<div class="container">
     {%- include header.html -%}
-
-    <main class="page-content" aria-label="Content">
-      <div class="wrapper">
+<div class="container">
+    
+    <div class="row">
+      <div class="col-md-3">
+        <div class="position-sticky" style="top:5rem;">
+          Other info<br/>Left menu?
+        </div>
+      </div>
+      <div class="col-md-9">
         {{ content }}
       </div>
-    </main>
+    </div>
+        
+    
 
     {%- include footer.html -%}
-    <button class="back-to-top hidden"><svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="back-to-top-icon"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M7 11l5-5m0 0l5 5m-5-5v12"
-      />
-    </svg></button>
+
   </div>
-    <script src="{{ "/assets/backtotop.js" | relative_url }}"></script>
+    
   </body>
 
 </html>

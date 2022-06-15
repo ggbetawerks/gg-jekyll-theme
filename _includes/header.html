@@ -1,65 +1,44 @@
 <header class="p-3 mb-3 border-bottom" role="banner">
-  <nav
-    class="navbar navbar-expand-lg bg-light rounded"
-    aria-label="Eleventh navbar example"
-  >
+
+  <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
     <div class="container-fluid">
-      {%- assign default_paths = site.pages | map: "path" -%} {%- assign
-      page_paths = site.header_pages | default: default_paths -%}
-      <a class="navbar-brand" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+      <a class="navbar-brand" href="{{ "/" | relative_url }}">
+        <!-- <img src="images/logo.svg" height="28" alt="CoolBrand" /> -->
+        {{ site.title | escape }}</a>
       <button
-        class="navbar-toggler"
         type="button"
+        class="navbar-toggler"
         data-bs-toggle="collapse"
-        data-bs-target="#navbarsExample09"
-        aria-controls="navbarsExample09"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
+        data-bs-target="#navbarCollapse"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav">
+          {%- for link in site.data.navigation.main -%} 
+              <a class="nav-item nav-link" href="{{ link.url | relative_url }}"
+                >{{ link.title | escape }}</a
+              >
+            {%- endfor -%}
+        </div>
+        <div class="navbar-nav ms-auto">
+          <form class="d-flex">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search" />
+              <button type="button" class="btn btn-secondary">
+                <i class="bi-search"></i>
+              </button>
+              <button type="button" class="btn btn-secondary">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </form>
 
-      <div class="collapse navbar-collapse" id="navbarsExample09">
-        {%- if page_paths -%}
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          {%- for path in page_paths -%} {%- assign my_page = site.pages |
-          where: "path", path | first -%} {%- if my_page.title -%}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ my_page.url | relative_url }}"
-              >{{ my_page.title | escape }}</a
-            >
-          </li>
-          {%- endif -%} {%- endfor -%}
-
-          <!-- 
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-          <ul class="dropdown-menu" aria-labelledby="dropdown09">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li> -->
-        </ul>
-        {%- endif -%}
-        <form role="search">
-          <input
-            class="form-control"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-        </form>
+        </div>
       </div>
     </div>
   </nav>
+
+
+  
 </header>
