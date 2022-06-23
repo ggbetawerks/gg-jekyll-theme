@@ -26,10 +26,11 @@
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search" />
               <button type="button" class="btn btn-secondary">
-                <i class="bi-search"></i>
-              </button>
-              <button type="button" class="btn btn-secondary">
-                <i class="fa fa-search"></i>
+                {%- if site.fontawesome_id -%}
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                {%- else -%}
+                  <i class="bi-search"></i>
+                {%- endif -%}
               </button>
             </div>
           </form>
@@ -38,7 +39,4 @@
       </div>
     </div>
   </nav>
-
-
-  
 </header>
