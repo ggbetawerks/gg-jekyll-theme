@@ -35,3 +35,5 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 gem "webrick", "~> 1.7"
+
+gem 'bootstrap', '~> 5.2.2'

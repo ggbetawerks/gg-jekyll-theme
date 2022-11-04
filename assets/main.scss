@@ -1,12 +1,17 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
 ---
 
 // @import "minima";
+:root{
+  @import "backtotop";
+  @import "nav";
+}
 
-@import "backtotop";
-@import "nav";
+// $primary: #6f0e83;
+// $body-bg: rgb(240, 126, 126);
+// $secondary: #0a36b1;
 
+@import 'vendor/bootstrap/stylesheets/bootstrap';
 
 
 .highlight {
