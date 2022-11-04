@@ -2,70 +2,78 @@
 layout: default
 ---
 
-<header class="masthead" style="background-image: url('assets/images/home-bg.jpg')">
+<header
+  class="masthead"
+  style="background-image: url('{{ site.header_image | relative_url}}')"
+>
   <div class="container position-relative px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center">
-          <div class="col-md-10 col-lg-8 col-xl-7">
-              <div class="site-heading">
-                  <h1>{{ site.title | escape }}</h1>
-                  {%- if site.subtitle -%}
-                    <span class="subheading">{{ site.subtitle | escape }}</span>
-                  {%- endif -%}
-              </div>
-          </div>
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <h1>{{ site.title | escape }}</h1>
+          {%- if site.subtitle -%}
+          <span class="subheading">{{ site.subtitle | escape }}</span>
+          {%- endif -%}
+        </div>
       </div>
+    </div>
   </div>
 </header>
 
-<div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
+<div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+      {%- if page.title -%}
+      <h1 class="page-heading">{{ page.title }}</h1>
+      {%- endif -%} {{ content }} {%- if site.posts.size > 0 -%} {%- assign
+      date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
 
-  {{ content }}
+      <h2 class="post-list-heading">
+        {{ page.list_title | default: "Posts" }}
+      </h2>
+      <ul class="post-list">
+        {%- for post in site.posts -%}
 
-  {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
-    <ul class="post-list">
-      {%- for post in site.posts -%}
-
-
-      <div class="d-flex my-1">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        
-        
-        
-        <div class="flex-grow-1 ms-3">
-          <h5>
-            <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">{{ post.title | escape }}</a>
-            <small class="text-muted"><i>Posted by
-              {% if post.author %}
-              {{ post.author }}
-              {% else %}
-              {{ site.author }}
-              {% endif %}
-              on
-              {{ post.date | date: date_format }} </i></small>
-          </h5>
-          <p>
-
-            {% if post.subtitle %}
-            {{ post.subtitle | escape }}
-            {% else %}
-            {{ post.excerpt | strip_html | truncatewords: 15 }}
+        <!-- Post preview-->
+        <div class="post-preview d-flex my-1">
+          <div class="flex-grow-1 ms-3">
+            <a
+              href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}"
+            >
+              <h2 class="post-title">{{ post.title | escape }}</h2>
+            </a>
+            <p class="post-meta">
+              Posted by {% if post.author %} {{ post.author }} {% else %} {{
+              site.author }} {% endif %} on {{ post.date | date: date_format }}
+            </p>
+            <p>
+              {% if post.subtitle %} {{ post.subtitle | escape }} {% else %} {{
+              post.excerpt | strip_html | truncatewords: 15 }} {% endif %}
+            </p>
+          </div>
+          <div class="flex-shrink-0" style="max-width: 25%; min-width: 10%">
+            {% if post.header.teaser %}
+            <img
+              src="{{ post.header.teaser | relative_url }}"
+              alt="Teaser Image"
+              style="width: 100%"
+            />
             {% endif %}
-          </p>
+          </div>
         </div>
-        <div class="flex-shrink-0" style="max-width: 25%;min-width: 10%;">
-          {% if post.header.teaser %}
-          <img src="{{ post.header.teaser | relative_url }}" alt="Teaser Image" style="width: 100%;"/>
-          {% endif %}
-        </div>
+        <!-- Divider-->
+        <hr class="my-4" />
+
+        {%- endfor -%}
+      </ul>
+
+      {%- endif -%}
+
+      <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>  -->
+      <!-- Pager-->
+      <div class="d-flex justify-content-end mb-4">
+        <a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a>
       </div>
-      {%- endfor -%}
-    </ul>
-
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-  {%- endif -%}
-
+    </div>
+  </div>
 </div>
