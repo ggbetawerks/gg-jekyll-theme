@@ -2,6 +2,21 @@
 layout: default
 ---
 
+<header class="masthead" style="background-image: url('assets/images/home-bg.jpg')">
+  <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+              <div class="site-heading">
+                  <h1>{{ site.title | escape }}</h1>
+                  {%- if site.subtitle -%}
+                    <span class="subheading">{{ site.subtitle | escape }}</span>
+                  {%- endif -%}
+              </div>
+          </div>
+      </div>
+  </div>
+</header>
+
 <div class="home">
   {%- if page.title -%}
     <h1 class="page-heading">{{ page.title }}</h1>
@@ -18,11 +33,7 @@ layout: default
       <div class="d-flex my-1">
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         
-        <div class="flex-shrink-0" style="max-width: 25%;min-width: 10%;">
-          {% if post.header.teaser %}
-          <img src="{{ post.header.teaser | relative_url }}" alt="Teaser Image" style="width: 100%;"/>
-          {% endif %}
-        </div>
+        
         
         <div class="flex-grow-1 ms-3">
           <h5>
@@ -45,34 +56,12 @@ layout: default
             {% endif %}
           </p>
         </div>
+        <div class="flex-shrink-0" style="max-width: 25%;min-width: 10%;">
+          {% if post.header.teaser %}
+          <img src="{{ post.header.teaser | relative_url }}" alt="Teaser Image" style="width: 100%;"/>
+          {% endif %}
+        </div>
       </div>
-
-
-      <!-- <article class="post-preview">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
-          <h2 class="post-title">{{ post.title | escape }}</h2>
-        </a>
-          {% if post.subtitle %}
-          <h3 class="post-subtitle">{{ post.subtitle | escape }}</h3>
-          {% else %}
-          <h3 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h3>
-          {% endif %}
-        
-        <p class="post-meta">Posted by
-          {% if post.author %}
-          {{ post.author }}
-          {% else %}
-          {{ site.author }}
-          {% endif %}
-          on
-          {{ post.date | date: date_format }} 
-        </p>
-      </article> -->
-
-
-
-
       {%- endfor -%}
     </ul>
 

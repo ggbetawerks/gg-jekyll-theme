@@ -1,42 +1,37 @@
-<header class="p-3 mb-3 border-bottom" role="banner">
+<!-- <header class="p-3 mb-3 border-bottom" role="banner"> -->
 
-  <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-    <div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+    <div class="container px-4 px-lg-5">
       <a class="navbar-brand" href="{{ "/" | relative_url }}">
         <!-- <img src="images/logo.svg" height="28" alt="CoolBrand" /> -->
         {{ site.title | escape }}</a>
-      <button
-        type="button"
-        class="navbar-toggler"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarCollapse"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav">
-          {%- for link in site.data.navigation.main -%} 
-              <a class="nav-item nav-link" href="{{ link.url | relative_url }}"
-                >{{ link.title | escape }}</a
-              >
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto py-4 py-lg-0">
+              {%- for link in site.data.navigation.main -%} 
+              
+              <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ link.url | relative_url }}">{{ link.title | escape }}</a></li>
             {%- endfor -%}
-        </div>
-        <div class="navbar-nav ms-auto">
-          <form class="d-flex">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search" />
-              <button type="button" class="btn btn-secondary">
-                {%- if site.fontawesome_id -%}
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                {%- else -%}
-                  <i class="bi-search"></i>
-                {%- endif -%}
-              </button>
-            </div>
-          </form>
 
+            </ul>
+            <form class="d-flex">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" />
+                <button type="button" class="btn btn-secondary">
+                  {%- if site.fontawesome_id -%}
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  {%- else -%}
+                    <i class="bi-search"></i>
+                  {%- endif -%}
+                </button>
+              </div>
+            </form>
         </div>
-      </div>
     </div>
-  </nav>
-</header>
+</nav>
+
+  
+<!-- </header> -->

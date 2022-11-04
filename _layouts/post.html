@@ -7,15 +7,33 @@ layout: default
   itemscope
   itemtype="http://schema.org/BlogPosting"
 >
-  {%- if page.header.image -%}
-  <div class="p-5 my-4 bg-light rounded-3">
-    <img
-      src="{{page.header.image | relative_url}}"
-      class="img-fluid mx-auto d-block rounded mh-100"
-      alt="..."
-    />
-  </div>
-  {%- endif -%}
+  <!-- Page Header-->
+  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+  {%- assign page_image = "" -%} {%- if page.header.image -%} {%- assign
+  page_image = page.header.image | relative_url -%} {%- endif -%}
+
+  <header class="masthead" style="background-image: url('{{page_image}}')">
+    <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="post-heading">
+            <h1>{{ page.title | escape }}</h1>
+
+            {%- if page.subheading -%}
+            <h2 class="subheading">{{ page.subheading | escape }}</h2>
+
+            {%- endif -%}
+
+            <span class="meta">
+              Posted by {% if page.author %} {{ page.author }} {% else %} {{
+              site.author }} {% endif %} on {{ page.date | date: date_format }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">
       {{ page.title | escape }}
